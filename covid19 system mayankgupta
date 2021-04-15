@@ -1,0 +1,24 @@
+import requests
+
+url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api_india"
+
+headers = {
+    'x-rapidapi-key': "f138dc70f4msh519128d96430f15p1ef201jsn7c0ed73b9015",
+    'x-rapidapi-host': "corona-virus-world-and-india-data.p.rapidapi.com"
+    }
+
+response = requests.request("GET", url, headers=headers).json()
+def search_by_city(city_name):
+    for each in response['state_wise']:
+        if int(response['state_wise'][each]['active']) !=0:
+            for city in response['state_wise'][each]['district']:
+                if city.lower() == city_name.lower():
+                    return response['state_wise'][each]['district'][city]['active']
+
+flag =1
+while flag!=0:
+    city_name = input("enter the city: ")
+    if city_name == "0":
+        break
+    cases = search_by_city(city_name)
+    print("Total no. of cases " +city_name+ " is: ",cases)
