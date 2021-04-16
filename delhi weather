@@ -1,0 +1,9 @@
+import requests
+from bs4 import BeautifulSoup
+
+search = "weather in delhi"
+url = "https://www.google.com/search?q=live+weather+report&sxsrf=ALeKk00_GioviOKQb8yMpLoaDnKT0aO8IQ%3A1618335918048&ei=rth1YOLFAuyV4-EPlficwAY&oq=live+&gs_lcp=Cgdnd3Mtd2l6EAEYATIECCMQJzIECCMQJzIHCAAQhwIQFDIICAAQsQMQgwEyCAgAELEDEIMBMggIABCxAxCDATIICAAQsQMQgwEyBQgAELEDMggIABCxAxCDATIFCAAQsQM6BwgjELADECc6BwgAEEcQsAM6AggAOgcIABDJAxAKOgUIABCSAzoHCCMQ6gIQJzoECAAQQzoKCAAQsQMQgwEQQzoHCAAQyQMQQ1CdHFigNmCPRmgCcAJ4BIABkQKIAa0RkgEFMC43LjSYAQCgAQGqAQdnd3Mtd2l6sAEKyAEJwAEB&sclient=gws-wiz"
+r= requests.get(url)
+s=BeautifulSoup(r.text,"html.parser")
+update = s.find("div",class_="BNeawe").text
+print(update)
