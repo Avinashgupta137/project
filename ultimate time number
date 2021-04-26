@@ -1,0 +1,12 @@
+while(True):
+    print("press 0 to exit program")
+    a = input("enter a number")
+    if a =='0':
+        break
+    try:
+        a = int(a)
+        if a>1 :
+            print(" you enter high of 0")
+    except Exception as e:
+        print(f"your input result is error{e}")
+print("thnx for playing game"
